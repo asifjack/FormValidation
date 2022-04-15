@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ form label {
+ display: inline-block;
+  width: 100px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+  margin-left: 5px;
+}
+
+label.error {
+  display: inline;
+}
+</style>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<body>
+<!-- <h2>JavaScript Functions</h2> -->
+<!-- <button id="btnId">Click Me<button/> -->
+<!-- <button onclick="print()">Print Me <button/>\ -->
+<!-- <p id="demo"></p> -->
+<!-- <ul id="list"> -->
+<!-- <ul/> -->
+<!-- </br> -->
+<!-- First Form -->
+<h2>Example 1:</h2>
+<form id="first_form" method="post" action="">
+  <div>
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name"></input>
+	<span id="fname"></span>
+  </div>
+  <div>
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name"></input>
+	<span id="lname"></span>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"></input>
+	<span id="e_email"></span>
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"></input>
+	<span id="pass"></span>
+  </div>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
+
+
+
+
+
+<script>
+
+
+
+
+
+
+$(document).ready(function() {
+
+  $('#first_form').submit(function(e) {
+    e.preventDefault();
+    var first_name = $('#first_name').val();
+    var last_name = $('#last_name').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+
+    $(".error").remove();
+
+    if (first_name.length < 1) {
+      $('#fname').html('<span class="error">This field is required</span>');
+    }
+    if (last_name.length < 1) {
+      $('#lname').html('<span class="error">This field is required</span>');
+    }
+    if (email.length < 1) {
+      $('#e_email').html('<span class="error">This field is required</span>');
+    } else {
+      var regEx = /^[A-Z0-9][A-Z0-9._%+-]{0,63}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/;
+      var validEmail = regEx.test(email);
+      if (!validEmail) {
+        $('#e_email').html('<span class="error">Enter a valid email</span>');
+      }
+    }
+    if (password.length < 8) {
+      $('#pass').html('<span class="error">Password must be at least 8 characters long</span>');
+    }
+  });
+
+});
+var courses = ["Php","Java","Python","Jsp"];
+console.log(courses);
+
+function Display() 
+{
+  alert ("Hello");
+}
+
+var btn = document.getElementById("btnId");
+btn.addEventListener("click",Display)
+
+</script>
+
+</body>
+</html>
